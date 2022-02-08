@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.custom.i18n.resources" value="mesTextes"/>
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <bean class="modele.Utilisateur" type="modele.Utilisateur"
+          scope="session" name="facade"/>
+
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="accueil"/>
+        <action name="accueil">
+            <result>/WEB-INF/pages/connexion.jsp</result>
+        </action>
+
+
+        <action name="saisie" class="actions.Saisie">
+            <result name="success">/WEB-INF/pages/pageAccueil.jsp</result>
+            <result name="input">/WEB-INF/pages/connexion.jsp</result>
+        </action>
+
+    </package>
+
+</struts>
